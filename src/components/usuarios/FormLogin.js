@@ -2,7 +2,7 @@ import  { useState } from 'react'
 import { FloatingLabel, Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Logo from '../Varios/Logo'
-import { ButtonContainer, FormContainer, H1Text, ImgRow } from './FormLoginStyles'
+import { ButtonContainer, FormContainer, H1Text} from './FormLoginStyles'
 import axios from 'axios';
 import { users } from '../../helpers/url'
 import Cookies from 'universal-cookie';

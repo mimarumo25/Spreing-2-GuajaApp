@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { ProductosContext } from '../../routes/AppRouter';
-import { getProductossByName } from '../../selectors/getProductosByName';
+
 import { ButonBuscar, FormStyle, ImgLupa, SearcherStyle, Tarjetasestilo } from '../../styles/template';
 import Cardsproductos from '../productos/CardsProductos';
 
@@ -12,7 +12,7 @@ import Cardsproductos from '../productos/CardsProductos';
 const Buscador = () => {
     const { datos } = useContext(ProductosContext);
     const navegator = useNavigate();
-    const [datosb, setDatosB] = useState({})
+   
     const [name, setName] = useState({
         name:'',
     })

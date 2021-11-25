@@ -1,7 +1,6 @@
 import React from 'react'
-import { ButtonGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router'
-import { ButonBuscar, FormStyle, ImgLupa, SearcherStyle } from '../../styles/template'
+import { FormStyle, ImgLupa, SearcherStyle } from '../../styles/template'
 
 
 export default function Busqueda({buscar, handleCancel, handleName}) {

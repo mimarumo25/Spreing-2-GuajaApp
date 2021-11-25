@@ -6,7 +6,6 @@ import GlobalStyle from "../globalstyles/Globalstyle";
 import Carrito from "../components/Carrito/Carrito";
 import { productos } from "../helpers/url";
 import axios from "axios";
-import Usuario from "../components/usuarios/Usuario";
 import FormRegistro from "../components/usuarios/FormRegistro";
 import Pago from "../components/pago/Pago";
 import FormLogin from "../components/usuarios/FormLogin";
@@ -57,7 +56,6 @@ const obtenerOfertas = async() => {
             <Route exact path="/Bebidas"  element={<Home categoria ={"bebidas"}/> } />
             <Route exact path="/Tamales"  element={<Home categoria ={"tamal"}/>} /> 
             <Route exact path="/Carrito" element={<Carrito />} /> 
-            <Route exact path="/Usuario" element={<Usuario />} /> 
             <Route exact path="/Registro" element={<FormRegistro />} /> 
             <Route exact path="/Login" element={<FormLogin />} /> 
             <Route exact path="/Buscador" element={<Buscador/>}/>
