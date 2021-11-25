@@ -1,0 +1,69 @@
+.mymodal {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.mymodal.is-open {
+    display: flex;
+}
+
+.mymodal-container {
+    position: relative;
+    background: #f2f2f2;
+    min-height: 312px;
+    width: 380px;
+    min-height: 450px;
+    max-width: 600px;
+    overflow-y: auto;
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.mymodal-close {
+    position: absolute;
+    top: 23rem;
+    right: 11.5rem;
+    width: 20px;
+    height: 21px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 21px;
+    text-align: center;
+    color: #FA4A0C;
+    border: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.btnActualizar {
+    position: absolute;
+   
+    height: 45px;
+    width: 243px;    
+    top: 18rem;;
+    right: 4.3rem;
+    border-radius: 40px;
+    padding: 12px, 24px, 12px, 24px;
+    color: #ffffffff;
+    background-color: #FA4A0C;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
