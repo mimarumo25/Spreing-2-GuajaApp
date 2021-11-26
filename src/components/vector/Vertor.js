@@ -9,7 +9,7 @@ const Vertor = ({pago}) => {
         return (
         
             <div>
-                <VectorStyle src={Vectorimg} alt="Atras" onClick={() => navegar(-1)}/>
+                <VectorStyle src={Vectorimg} alt="Atras" onClick={() => navegar(-2)}/>
             </div>
         );   
      }else{

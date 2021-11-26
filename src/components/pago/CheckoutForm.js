@@ -18,8 +18,9 @@ export default function CheckoutForm() {
     let subtotal = 0;
     productosCarrito.forEach(p => {
         subtotal = p.precio * p.cantidad
-        total += subtotal
+         total += subtotal;
     });
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,6 +29,7 @@ export default function CheckoutForm() {
             card: element.getElement(CardElement)
         })
         const { id } = paymentMethod
+        total = total*100;
         if (!error) {
             try {
                 const { data } = await axios.post('http://localhost:3001/api/checkout', {
@@ -69,7 +71,7 @@ export default function CheckoutForm() {
                     }
                     <TotalPago>
                         <h2><b>Total</b></h2>
-                        <Moneda>$ {`${total}.00`} <span >MXN</span></Moneda>
+                        <Moneda>$ {total} <span >MXN</span></Moneda>
                     </TotalPago>
                     <div className="mx-3 my-3 ">
                         <CardElement className="form-control fs-3" />

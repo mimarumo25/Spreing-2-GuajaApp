@@ -10,6 +10,8 @@ import FormRegistro from "../components/usuarios/FormRegistro";
 import Pago from "../components/pago/Pago";
 import FormLogin from "../components/usuarios/FormLogin";
 import Buscador from "../components/buscador/Buscador";
+import '../styles/prueba.css'
+
 
 
 export const ProductosContext = createContext({  
