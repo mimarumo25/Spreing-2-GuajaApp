@@ -42,7 +42,7 @@ const Buscador = () => {
                     {
                         datos.map((dat) => (
                             <Tarjetasestilo key={dat.id} >
-                                <Link className="link" to={`//` + dat.id} datos={dat}>
+                                <Link className="link" to={`/${dat.categoria}/` + dat.id} >
                                     <Cardsproductos data={dat} />
                                 </Link>
                             </Tarjetasestilo>

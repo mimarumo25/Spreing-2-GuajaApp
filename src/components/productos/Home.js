@@ -40,7 +40,7 @@ export function Home({ categoria }) {
           {
             data.map((dat) => (
               <Tarjetasestilo key={dat.id} >
-                <Link className="link" to={`/${categoria}/` + dat.id} datos={dat}>
+                <Link className="link" to={`/${categoria}/` + dat.id} >
                   <Cardsproductos data={dat} />
                 </Link>
               </Tarjetasestilo>
