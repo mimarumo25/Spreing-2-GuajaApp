@@ -11,9 +11,10 @@ import { Formik } from "formik";
 import Vertor from "../vector/Vertor";
 import alertify from "alertifyjs";
 import 'alertifyjs/build/css/alertify.css';
+import { useNavigate } from "react-router";
 
 const FormRegistro = () => {
-  
+  const navegator = useNavigate();
   return (
     <>
       <Vertor />
@@ -60,6 +61,7 @@ const FormRegistro = () => {
           
           });
           resetForm();
+          navegator("/Login")
         }}
       >
         {({
