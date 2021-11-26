@@ -5,3 +5,16 @@ text-decoration: none;
     color:red;
    
 }
+.activeImage{
+    opacity: 0.5;
+}
+.activeImage:hover{
+    opacity: none;
+}
+.activeImage:active{
+    opacity: none;
+}
+.activa{
+    opacity:none;
+}
+

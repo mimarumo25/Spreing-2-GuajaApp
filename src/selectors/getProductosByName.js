@@ -1,7 +1,4 @@
+export const getProductossByName = (sabor, datos, cat) => {
 
-export const getProductossByName = ( name = '',datos ) => {
-
-   
-    return datos.filter( p => p.name.includes( name ));
-
-}
+  return datos.find((p) => p.sabor === sabor && p.categoria == cat);
+};

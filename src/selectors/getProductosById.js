@@ -1,5 +1,5 @@
 
 export const getProductosById = ( id, datos ) => {
    
-    return datos.filter(d => d.id == id );
+    return datos.find(d => d.id == id );
 }

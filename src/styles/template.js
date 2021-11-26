@@ -85,15 +85,21 @@ export const Navstyle = styled.nav`
 }
 
 .link{
-    text-decoration: none;
-    padding-right:10%; 
-    font-size: 1.1rem;
-    
+   text-decoration: none;
+    padding-right: 8%;
+    font-size: 21px;
+    color: #9A9A9D;
 }
 
 
 .link:hover{
     color: tomato;
+   
+    
+}
+.li::active{
+  color: tomato; 
+
 }
 `
 

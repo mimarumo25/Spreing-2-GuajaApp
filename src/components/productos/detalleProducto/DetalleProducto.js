@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import LogoCarrito from '../../Varios/LogoCarrito';
 import Vertor from '../../vector/Vertor';
@@ -20,6 +20,7 @@ import Sabor from '../../../images/sabores/Sabores';
 import ComboDetalles from './ComboDetalles';
 import { ProductosContext } from '../../../routes/AppRouter'
 import { getProductosById } from '../../../selectors/getProductosById';
+import { getProductossByName } from '../../../selectors/getProductosByName';
 
 
 const Detalleproducto = () => {
@@ -28,12 +29,13 @@ const Detalleproducto = () => {
     let productoSabor = false
     const [counter, setCounter] = useState(1);
     const { setProductosCarrito, datos } = useContext(ProductosContext);
-    const gotoCarrito = useNavigate();
-
     let { id, producto } = useParams(); //parametros enviados por la url
 
-    const [data] = getProductosById(id, datos); //filtro de la data por id dinamaico
-
+    const [par, setPar] = useState(id)
+    const dataId = getProductosById(par, datos); //filtro de la data por id dinamaico   
+    const [data, setData] = useState(dataId)
+    const gotoCarrito = useNavigate();
+ 
     if (producto === "guajolotas") { //serie de if para validar que que producto debemos buscar
 
         productoSabor = true;
@@ -42,6 +44,12 @@ const Detalleproducto = () => {
 
         productoSabor = true;
     }
+    const handleImages = (sabor,cat) =>{
+        const data = getProductossByName(sabor, datos,cat);
+        setData(data)
+       
+    }
+
 
     const handleSumar = () => {
         setCounter(counter + 1)
@@ -128,27 +136,29 @@ const Detalleproducto = () => {
                 <div className="row">
                     <h5>Sabor</h5>
                     <div className="col" >
-                        <img className="m-4" src={Sabor.rajas} alt='rojas' />
-                        <img className="m-4" src={Sabor.verde} alt='verde' />
-                        <img className="m-4" src={Sabor.mole} alt='mole' />
+                       
+                        <img className={data.sabor ==="verde"?"activa m-4":"activeImage m-4"} src={Sabor.verde} alt='verde' onClick={()=>handleImages("verde",data.categoria)}/>
+                        <img className={data.sabor ==="mole"?"activa m-4":"activeImage m-4"} src={Sabor.mole} alt='mole' onClick={()=>handleImages("mole",data.categoria)}/>
+                        <img className={data.sabor ==="pasas"?"activa m-4":"activeImage m-4"} src={Sabor.rajas} alt='rajas' onClick={()=>handleImages("pasas",data.categoria)}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
-                        <img className="m-4" src={Sabor.guayaba} alt='guayaba' />
-                        <img className="m-4" src={Sabor.pasas} alt='pasas' />
-                        <img className="m-4" src={Sabor.piña} alt='piña' />
+                        <img className={data.sabor ==="guayaba"?"activa m-4":"activeImage m-4"} src={Sabor.guayaba} alt='guayaba' onClick={()=>handleImages("guayaba",data.categoria)}/>
+                        <img className={data.sabor ==="pasas"?"activa m-4":"activeImage m-4"} src={Sabor.pasas} alt='pasas' onClick={()=>handleImages("pasas",data.categoria)}/>
+                        <img className={data.sabor ==="piña"?"activa m-4":"activeImage m-4"} src={Sabor.piña} alt='piña' onClick={()=>handleImages("piña",data.categoria)}/>
                     </div>
                 </div>
                 {<ComboDetalles categoria={"bebidas"} handlechange={handlechange} />}
                 <BotonAdd type="button" onClick={() => handleAddCar(data, counter)}>{`Agregar ${counter} productos al carrito por valor $ ${counter * data.precio} MXN`}</BotonAdd>
             </div>
         )
-    }
+    } 
     if (producto === "bebidas") {
         return (
             <div>
-                <Vertor />
+               
+              <Vertor />
                 <LogoCarrito handleCarrito={handleCarrito}/>
                 <DetalleProductoDiv>
                     <ImagenDiv>
@@ -157,23 +167,24 @@ const Detalleproducto = () => {
                     <NombreProducto>{data.nombre}</NombreProducto>
                     <Precio>{data.precio}</Precio>
                     <Cantidad>
-                        <Sumar onClick={handleRestar} src={cantidadMenos} alt='imagen' />
+                        <Sumar onClick={handleRestar} src={cantidadMenos} alt='imagen menos' />
                         < CantidadNumer min="0">{counter}</CantidadNumer>
-                        <Sumar onClick={handleSumar} src={cantidadMas} alt='imagen' />
+                        <Sumar onClick={handleSumar} src={cantidadMas} alt='imagen mas' />
                     </Cantidad>
                 </DetalleProductoDiv>
                 <div className="row">
                     <h5>Sabor</h5>
                     <div className="col">
-                        <img className="m-4" src={Sabor.arrozLeche} alt='sabores' />
-                        <img className="m-4" src={Sabor.cafe} alt='sabores' />
-                        <img className="m-4" src={Sabor.chocolate} alt='sabores' />
+                        <img className={data.nombre ==="Atole de Arroz con Leche"?"activa m-4":"activeImage m-4"}  src={Sabor.arrozLeche} alt='sabores' onClick={()=>handleImages("Atole de Arroz con Leche",data.categoria)}/>
+                        <img className={data.nombre ==="Cafe Negro"?"activa m-4 ":"activeImage m-4"} src={Sabor.cafe} alt='sabores' onClick={()=>handleImages("cafe negro",data.categoria)}/>
+                        <img className={data.nombre ==="Chocolate Caliente"?"activa m-4":"activeImage m-4"} src={Sabor.chocolate} alt='sabores' onClick={()=>handleImages("Chocolate Caliente",data.categoria)}/>
+                        <img className={data.nombre ==="Champurrado"?"activa m-4":"activeImage m-4"} src={Sabor.champurrado} alt='sabores' onClick={()=>handleImages("Champurrado",data.categoria)}/>
                     </div>
                 </div>
                 <ComboDetalles categoria={"guajolotas"} handlechange={handlechange}/>
 
                 <BotonAdd type="button" onClick={() => handleAddCar(data, counter)}>{`Agregar ${counter} productos al carrito por valor $ ${counter * data.precio} MXN`}</BotonAdd>
-            </div>
+              </div>
         );
     }
 }
