@@ -139,7 +139,7 @@ const Detalleproducto = () => {
                        
                         <img className={data.sabor ==="verde"?"activa m-4":"activeImage m-4"} src={Sabor.verde} alt='verde' onClick={()=>handleImages("verde",data.categoria)}/>
                         <img className={data.sabor ==="mole"?"activa m-4":"activeImage m-4"} src={Sabor.mole} alt='mole' onClick={()=>handleImages("mole",data.categoria)}/>
-                        <img className={data.sabor ==="pasas"?"activa m-4":"activeImage m-4"} src={Sabor.rajas} alt='rajas' onClick={()=>handleImages("pasas",data.categoria)}/>
+                        <img className={data.sabor ==="rajas"?"activa m-4":"activeImage m-4"} src={Sabor.rajas} alt='rajas' onClick={()=>handleImages("rajas",data.categoria)}/>
                     </div>
                 </div>
                 <div className="row">

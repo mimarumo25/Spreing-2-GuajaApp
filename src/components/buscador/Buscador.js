@@ -6,6 +6,7 @@ import { getProductosName } from '../../selectors/getProdcutoName';
 
 import { ButonBuscar, FormStyle, ImgLupa, SearcherStyle, Tarjetasestilo } from '../../styles/template';
 import Cardsproductos from '../productos/CardsProductos';
+import buscador from '../../images/Buscar.png'
 
 
 
@@ -29,7 +30,6 @@ const Buscador = () => {
           ...name,
           [target.name]: target.value
         })
-
        const data  = getProductosName(name.name, datos)
      if(name.name=''){
            setBusc(datos)
@@ -52,7 +52,7 @@ const Buscador = () => {
             </FormStyle>
             {
                 <div>
-                    {
+                    {busc.length >0?
                         busc.map((dat) => (
                             <Tarjetasestilo key={dat.id} >
                                 <Link className="link" to={`/${dat.categoria}/` + dat.id} >
@@ -60,6 +60,12 @@ const Buscador = () => {
                                 </Link>
                             </Tarjetasestilo>
                         ))
+                        :<div className="text-center mt-5">
+                            
+                            <img src={buscador} alt="Logo No hay resultados" className="mt-5"/>
+                           
+                        </div>
+
                     }
                 </div>
             }
