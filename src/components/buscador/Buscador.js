@@ -39,7 +39,6 @@ const Buscador = () => {
     
     }   
     
- console.log(busc);
     return (
         <div>
             <FormStyle>
