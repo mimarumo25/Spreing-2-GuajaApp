@@ -17,7 +17,7 @@ app.post("/api/checkout", async (req, res) => {
     const payment = await stripe.paymentIntents.create({
       amount,
       currency: "MXN",
-      description: "Gaming Keyboard",
+      description: "Compra en guajalotas App",
       payment_method: id,
       confirm: true, //confirm the payment at the same time
     });
