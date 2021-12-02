@@ -11,12 +11,15 @@ import Pago from "../components/pago/Pago";
 import FormLogin from "../components/usuarios/FormLogin";
 import Buscador from "../components/buscador/Buscador";
 import '../styles/prueba.css'
+import { Respuesta } from "../components/pago/Respuesta";
 
 
 
 export const ProductosContext = createContext({  
   productosCarrito: [],
   setProductosCarrito: () => null,
+  dataRes:[],
+  setDataRes:()=>null,
   datos:[],
   setDatos:()=>null
 });
@@ -25,10 +28,13 @@ export default function AppRouter() {
 
   const [productosCarrito, setProductosCarrito] = useState([])
   const [datos, setDatos] = useState([])
+  const [dataRes, setDataRes] = useState([])
   
   const contextData = { 
       productosCarrito,
       setProductosCarrito,
+      dataRes,
+      setDataRes,
       datos,
       setDatos
    }  
@@ -61,6 +67,7 @@ const obtenerOfertas = async() => {
             <Route exact path="/Registro" element={<FormRegistro />} /> 
             <Route exact path="/Login" element={<FormLogin />} /> 
             <Route exact path="/Buscador" element={<Buscador/>}/>
+            <Route exact path="/Pago/Pago_exitoso" element={<Respuesta/>}/>
             <Route exact path="/:producto/:id" element={<Detalleproducto />} />           
         </Routes>
       </BrowserRouter>

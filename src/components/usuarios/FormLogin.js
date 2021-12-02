@@ -41,6 +41,7 @@ const iniciarSeccion = async () => {
         cookies.set('id', resp.id, { path: "/" })
         cookies.set('name', resp.name, { path: "/" })
         cookies.set('email', resp.email, { path: "/" })
+        cookies.set('direccion', resp.direccion, { path: "/" })
         localStorage.setItem('seccionAppguajoapp','true');
         alertify.notify('Seccion exitosa', 'success', 5, function () { console.log('dismissed'); });
         navigator('/Pago');

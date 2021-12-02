@@ -3,16 +3,18 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import axios from 'axios';
 
 import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router';
 import { ProductosContext } from '../../routes/AppRouter';
 import { DivCarrito, TotalPago, H5, ImagenCarrito, Moneda, PrecioCarrito, SmallCantidad } from '../Carrito/CarritoStyle';
+import { Respuesta } from './Respuesta';
 
 export default function CheckoutForm() {
     //Hooks
     const stripe = useStripe();
     const element = useElements();
     const [loading, setLoading] = useState(false)
-
-    const { productosCarrito } = useContext(ProductosContext);
+    const navegator = useNavigate();
+    const { productosCarrito, setDataRes} = useContext(ProductosContext);
 
     let total = 0;
     let subtotal = 0;
@@ -37,8 +39,9 @@ export default function CheckoutForm() {
                     amount: total,
                 });
                 setLoading(true)
-                console.log(data);
-
+                //console.log(data);
+                setDataRes(data)
+                navegator('/Pago/Pago_exitoso')
                 element.getElement(CardElement).clear();
             } catch (error) {
                 console.log(error);
@@ -51,7 +54,7 @@ export default function CheckoutForm() {
     };
 
     return (
-
+        <>
         <form onSubmit={handleSubmit} className="container">
             <div className="card-body">
                 <div className="form-group">
@@ -85,6 +88,9 @@ export default function CheckoutForm() {
                 </div>
 
             </div>
+            
         </form>
+        
+        </>
     )
 }
